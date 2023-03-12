@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>ARS</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="home.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header sticky-top py-1">
+        <nav class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="#" aria-label="Product">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
+                    viewBox="0 0 24 24">
+                    <title>Car Rental Services</title>
+                    <circle cx="12" cy="12" r="10" />
+                    <path
+                        d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                </svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Choose Location</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Book A Car</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Become Host</a>
+            <a class="py-2 d-none d-md-inline-block" href="#" onclick="logIn()"><span
+                    class="login">Login/Register</span></a>
+            <a class="py-2 d-none d-md-inline-block"><span class="logout" onclick="logOut()">Logout</span></a>
+            <span class="py-2 d-none d-md-inline-block username">Welcome User</span>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="
+                        z-index: 99;
+                        background-image: url('data:image/jpeg;base64,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');
+                    ">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <!-- <img   
+                            fill="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimageio.forbes.com%2Fspecials-images%2Fimageserve%2F5f962df3991e5636a2f68758%2F0x0.jpg%3Fformat%3Djpg%26crop%3D812%2C457%2Cx89%2Cy103%2Csafe%26width%3D1200&imgrefurl=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fkbrauer%2F2020%2F10%2F26%2Fthese-are-the-25-fastest-cars-in-the-world-in-2020%2F&tbnid=5fTCGCqj1OTYqM&vet=12ahUKEwiDo__S79D9AhX5-jgGHZRpC14QMygBegUIARDcAQ..i&docid=VwejRNF-jYWpuM&w=812&h=457&q=cars&ved=2ahUKEwiDo__S79D9AhX5-jgGHZRpC14QMygBegUIARDcAQ"
+                            alt=""> -->
+                        <rect width="100%" height="100%" 
+                        
+                        />
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption text-start" style="background-image: url('https://images.unsplash.com/photo-1611846043818-e4186a5a494e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHB1dHxlbnwwfHwwfHw%3D&w=1000&q=80');">
+                            <h1>Example headline.</h1>
+                            <p>Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="'https://images.unsplash.com/photo-1611846043818-e4186a5a494e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHB1dHxlbnwwfHwwfHw%3D&w=1000&q=80'" alt="">
+                    
+
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="'https://images.unsplash.com/photo-1611846043818-e4186a5a494e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHB1dHxlbnwwfHwwfHw%3D&w=1000&q=80'" alt="">
+                    
+
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>One more for good measure.</h1>
+                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <!-- Marketing messaging and featurettes
+  ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg>
+
+                    <h2>Heading</h2>
+                    <p>Some representative placeholder content for the three columns of text below the carousel. This is
+                        the first column.</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg>
+
+                    <h2>Heading</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg>
+
+                    <h2>Heading</h2>
+                    <p>And lastly this, the third column of representative placeholder content.</p>
+                    <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your
+                            mind.</span></h2>
+                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
+                        prose here.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for
+                            yourself.</span></h2>
+                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
+                        how this layout would work with some actual real-world content in place.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
+                        really intended to be actually read, simply here to give you a better view of what this would
+                        look like with some actual content. Your content.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Product</title>
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                    </svg>
+                    <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Cool stuff</a></li>
+                        <li><a class="link-secondary" href="#">Random feature</a></li>
+                        <li><a class="link-secondary" href="#">Team feature</a></li>
+                        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+                        <li><a class="link-secondary" href="#">Another one</a></li>
+                        <li><a class="link-secondary" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Resource name</a></li>
+                        <li><a class="link-secondary" href="#">Resource</a></li>
+                        <li><a class="link-secondary" href="#">Another resource</a></li>
+                        <li><a class="link-secondary" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Business</a></li>
+                        <li><a class="link-secondary" href="#">Education</a></li>
+                        <li><a class="link-secondary" href="#">Government</a></li>
+                        <li><a class="link-secondary" href="#">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Team</a></li>
+                        <li><a class="link-secondary" href="#">Locations</a></li>
+                        <li><a class="link-secondary" href="#">Privacy</a></li>
+                        <li><a class="link-secondary" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <footer class="container">
+            <p class="float-end"><a href="#">Back to top</a></p>
+            <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    </main>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="home.js"></script>
+
+</body>
+
+</html>
